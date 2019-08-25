@@ -1,0 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class NotesPO {
+}
+exports.NotesPO = NotesPO;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTm90ZXNQTy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3JhX2F1dG9tYXRpb24vcG8vaG9tZXBhZ2UvcmVzdXBwbGllc2J1Y2tldC9yZXN1cHBsaWVzY29udGFjdGluZm9ybWF0aW9ucGFnZS9Ob3Rlc1BPLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsTUFBYSxPQUFPO0NBRW5CO0FBRkQsMEJBRUMifQ==

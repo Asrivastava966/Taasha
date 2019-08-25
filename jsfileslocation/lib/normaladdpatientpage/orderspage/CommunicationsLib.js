@@ -1,0 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class CommunicationsLib {
+}
+exports.CommunicationsLib = CommunicationsLib;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29tbXVuaWNhdGlvbnNMaWIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9yYV9hdXRvbWF0aW9uL2xpYi9ub3JtYWxhZGRwYXRpZW50cGFnZS9vcmRlcnNwYWdlL0NvbW11bmljYXRpb25zTGliLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsTUFBYSxpQkFBaUI7Q0FFN0I7QUFGRCw4Q0FFQyJ9

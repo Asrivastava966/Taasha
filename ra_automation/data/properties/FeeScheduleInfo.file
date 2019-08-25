@@ -1,0 +1,8 @@
+feeSchedules.Description= automationFeeSchedule
+feeSchedules.Type= Medicare
+feeSchedules.Status= Active
+feeSchedules.Comments= This get generate by running Automation script for
+
+feeScheduleDetail.Feeschedule= ALLIANZ GLOBAL ASSISTANCE
+feeScheduleDetail.HCPCS_Code= E0601
+feeScheduleDetail.BeginDate= 2019/01/02

@@ -1,0 +1,38 @@
+//SU
+userinfo.username.su.adminuser = asqat@css 
+userinfo.password.su.adminuser = Taasha@123
+
+//Admin
+userinfo.role.adminuser = AUTO-ADMIN-ROLE
+userinfo.username.adminuser = TEST_Automation_Admin
+
+//Normal User
+userinfo.role.normaluser = AUTOMATION-ROLE
+userinfo.username.normaluser = TEST_Automation_NormalUser
+
+//Sales Rep.
+userinfo.role.salesrep = CSS_SALES_REP
+userinfo.username.salesrep = TEST_Automation_SalesRep
+
+//Technician
+userinfo.role.technician = TECH
+userinfo.username.technician = TEST_Automation_Technician
+
+//General Info
+userinfo.password = Anridh7.
+userinfo.firstname = TestAutomationFname
+userinfo.mi = 
+userinfo.lastname = TestAutomationLname
+userinfo.birthdate = 1992/08/02
+userinfo.addressone = TEST_Address_One
+userinfo.addresstwo = TEST_Address_Two
+userinfo.city = New York
+userinfo.state = New York
+userinfo.zipcode = 123456789
+userinfo.homephone = 1112223333
+userinfo.officephone = 1231231234
+userinfo.officephoneext = 555555
+userinfo.mobile = 9876543210
+userinfo.fax = 7894561230
+userinfo.email = test_primary@anridhautomation.com
+userinfo.secondaryemail = test_secondary@anridhautomation.com

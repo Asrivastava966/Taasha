@@ -1,0 +1,40 @@
+//Add Patient
+patientinfo.firstname = Test_
+patientinfo.lastname = Las_
+patientinfo.mi = 12345
+patientinfo.birthdate = 1992/08/02
+patientinfo.gender.male = Male
+patientinfo.gender.female = Female
+patientinfo.status.active = Active
+patientinfo.status.inactive = Inactive
+patientinfo.status.deceased = Deceased
+patientinfo.status.lost = Lost
+patientinfo.branchoffice = 10 -- CSS-Aston
+patientinfo.legacyid = 123
+patientinfo.custom = 123 
+patientinfo.billingaddress.addressone = abc
+patientinfo.billingaddress.addresstwo = def
+patientinfo.billingaddress.city = Kansas City
+patientinfo.billingaddress.state = Kansas
+patientinfo.billingaddress.zipcode = 123456789
+patientinfo.billingaddress.timezone = (UTC-05:00) US/Eastern
+
+//Update Patient 
+patient.patientinfo.firstname = UpdatePatient_fName
+patient.patientinfo.lastname = UpdatePatient_lName
+patient.patientinfo.birthdate = 2018/12/25 
+patient.patientinfo.gender = Female
+patient.patientinfo.status = Active
+patient.patientinfo.email = ptrivedi_ 
+
+patient.insuranceinfo.insurancetype = Primary 
+patient.insuranceinfo.provider = 77 - TEST_Automation_Taasha_Insurance
+patient.insuranceinfo.policynumber = 123 
+patient.insuranceinfo.groupnumber = 987 
+patient.insuranceinfo.relationship = Self 
+patient.insuranceinfo.startdate = 2018/12/26 
+patient.insuranceinfo.plantype = HMO 
+
+patient.orderinfo.ordertype = CPAP 
+patient.orderinfo.workflowstatus = New Orders 
+patient.orderinfo.billingsetupdate = 2018/12/27

@@ -1,0 +1,51 @@
+{
+    "patient": {
+      "firstNm": "Automation_Patient_fName_API",
+      "mi": null,
+      "lastNm": "Automation_Patient_lName_API",
+      "dob": "11/26/2018",
+      "gender": "M",
+      "statusCd": "A",
+      "branchId": 6
+    },
+    "contact": {
+      "homePhNo": null,
+      "workPhNo": null,
+      "workPhExt": null,
+      "mobNo": null,
+      "fax": null,
+      "email": "xyz@taasha.tech",
+      "addrLn1": null,
+      "addrLn2": null,
+      "city": null,
+      "state": null,
+      "zip": null
+    },
+    "insurance": {
+      "insTypId": null,
+      "insProviderId": null,
+      "policyNo": null,
+      "groupNo": null,
+      "relationTypId": null,
+      "startDt": null,
+      "endDt": null,
+      "planTypId": null
+    },
+    "doctor": {
+      "orderingDocId": null,
+      "priDocId": null,
+      "facilityId": null,
+      "mrId": null
+    },
+    "order": {
+      "orderTypCd": "UA",
+      "workflowStatusCd": "NW",
+      "orderNo": null,
+      "orderOwnerId": 154,
+      "assignToId": 154,
+      "branchId": 6,
+      "sameDayFlg": null,
+      "setupDt": null,
+      "notes": null
+    }
+  }

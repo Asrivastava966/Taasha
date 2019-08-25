@@ -1,0 +1,50 @@
+{
+  "name": "ra_automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "dependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/request": "^2.48.1",
+    "grunt": "^1.0.3",
+    "jasmine": "^3.3.0",
+    "jasmine-allure-reporter": "^1.0.2",
+    "jasmine-expect": "^3.8.4",
+    "jasmine-reporters": "^2.3.2",
+    "jasmine-spec-reporter": "^4.2.1",
+    "log4js": "^3.0.6",
+    "log4js-protractor-appender": "^1.1.2",
+    "ndb": "^1.0.26",
+    "nodemailer": "^4.7.0",
+    "properties-reader": "^0.0.16",
+    "protractor": "^5.4.1",
+    "protractor-api-resource": "^1.0.3",
+    "protractor-http-client": "^1.0.4",
+    "protractor-jasmine2-parallel-html-reporter": "^1.0.0",
+    "request": "^2.88.0",
+    "typescript": "^3.1.4",
+    "webdriver-manager": "^12.1.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "zip-folder": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.7",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "grunt-contrib-jasmine": "^2.0.3",
+    "jasmine-data-provider": "^2.2.0",
+    "jasmine-json-test-reporter": "^1.0.0-beta",
+    "protractor-beautiful-reporter": "^1.2.7",
+    "protractor-element-extend": "^2.1.0"
+  },
+  "scripts": {
+    "update": "./node_modules/.bin/webdriver-manager update",
+    "start": "./node_modules/.bin/webdriver-manager start",
+    "pretest": "tsc",
+    "test": "./node_modules/.bin/protractor ./ra_automations/config.js",
+    "posttest": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

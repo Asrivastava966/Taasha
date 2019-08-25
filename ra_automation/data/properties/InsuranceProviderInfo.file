@@ -1,0 +1,9 @@
+insuranceproviderinfo.providername = TEST_Automation_InsProvider
+insuranceproviderinfo.legacyid = 12345
+insuranceproviderinfo.npi = 11
+insuranceproviderinfo.website = www.bds@anridhautomation.com
+insuranceproviderinfo.providernumber = 121212 
+insuranceproviderinfo.notes = test 
+insuranceproviderinfo.phonenumber = 1212121212 
+insuranceproviderinfo.phoneextnumber = 12121
+insuranceproviderinfo.email = testautomation@anridh.com

@@ -1,0 +1,28 @@
+//Add Order 
+orders.orderinfo.orderowner = 
+orders.orderinfo.assignto = 
+orders.orderinfo.branch = 
+orders.orderinfo.billingorsetupdate = 2019/01/01
+
+
+//Add Product - Respironics 
+orders.orderinfo.productinfo.quantity = 1
+orders.orderinfo.productinfo.hcpcs = A7035 - Pos airway press headgea
+orders.orderinfo.productinfo.product = 1002064 - Medium Mesh soft cap;
+orders.orderinfo.productinfo.referenceno = 12345 
+
+//Add Product - Resmed 
+orders.orderinfo.productinfo.resmed.quantity = 1
+orders.orderinfo.productinfo.resmed.hcpcs = E0601
+orders.orderinfo.productinfo.resmed.product = 33039
+orders.orderinfo.productinfo.resmed.referenceno = 12345 
+
+//Clinical Info - Doctor Info 
+orders.clinicalinfo.orderingdoctor = ABBAS, QAMMAR
+orders.clinicalinfo.facility = 
+orders.clinicalinfo.primarydoctor = 
+orders.clinicalinfo.salesrep = 
+
+
+//Ins Verification Info 
+orders.insuranceverification.verificationdate = 2019/01/01

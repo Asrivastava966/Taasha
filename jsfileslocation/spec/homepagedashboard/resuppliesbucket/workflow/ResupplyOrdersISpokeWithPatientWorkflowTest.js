@@ -1,0 +1,224 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const LoginLib_1 = require("../../../../lib/loginpage/LoginLib");
+const HomepageLib_1 = require("../../../../lib/homepage/HomepageLib");
+const AddPatientMode_1 = require("../../../../data/enums/AddPatientMode");
+const AddPatientLib_1 = require("../../../../lib/normaladdpatientpage/AddPatientLib");
+const Patient_1 = require("../../../../data/basedata/Patient");
+const Insurance_1 = require("../../../../data/basedata/Insurance");
+const OrderType_1 = require("../../../../data/enums/OrderType");
+const CommonUtils_1 = require("../../../../utils/CommonUtils");
+const InsuranceType_1 = require("../../../../data/enums/InsuranceType");
+const Order_1 = require("../../../../data/basedata/Order");
+const Product_1 = require("../../../../data/basedata/Product");
+const UserInfo_1 = require("../../../../data/info/UserInfo");
+const AdminDashboardLib_1 = require("../../../../lib/admindashboardpage/AdminDashboardLib");
+const AdminDashboardBucket_1 = require("../../../../data/enums/AdminDashboardBucket");
+const ResuppliesCampaignListLib_1 = require("../../../../lib/admindashboardpage/resupplycampaignsbucket/ResuppliesCampaignListLib");
+const ResuppliesContactInformationLib_1 = require("../../../../lib/homepage/resuppliesbucket/resuppliescontactinformationpage/ResuppliesContactInformationLib");
+const HomepageDashboardBucket_1 = require("../../../../data/enums/HomepageDashboardBucket");
+const ResuppliesDashboardLib_1 = require("../../../../lib/homepage/resuppliesbucket/ResuppliesDashboardLib");
+const ResuppliesDashboardBucket_1 = require("../../../../data/enums/ResuppliesDashboardBucket");
+const ResupplyOrdersLib_1 = require("../../../../lib/homepage/resuppliesbucket/ResupplyOrdersLib");
+const ISpokeWithPatientInfo_1 = require("../../../../data/info/ISpokeWithPatientInfo");
+const ISpokeWithPatientAnswers_1 = require("../../../../data/enums/ISpokeWithPatientAnswers");
+const ReportsBucket_1 = require("../../../../data/enums/ReportsBucket");
+const ReportsLib_1 = require("../../../../lib/reportspage/ReportsLib");
+const OrdersLib_1 = require("../../../../lib/reportspage/OrdersLib");
+const PendingOrdersLib_1 = require("../../../../lib/homepage/pendingbucket/PendingOrdersLib");
+const ContactPatientOrdersLib_1 = require("../../../../lib/homepage/contactpatientbucket/ContactPatientOrdersLib");
+const Document_1 = require("../../../../data/basedata/Document");
+const Tabs_1 = require("../../../../data/enums/Tabs");
+const DocumentType_1 = require("../../../../data/enums/DocumentType");
+const DeliveryTicketFormInfo_1 = require("../../../../data/info/DeliveryTicketFormInfo");
+const FormsInfo_1 = require("../../../../data/info/FormsInfo");
+let propertiesReader = require('properties-reader');
+let orderInfoProperties = propertiesReader('ra_automation/data/properties/OrderInfo.file');
+let userInfoProperties = propertiesReader('ra_automation/data/properties/UserInfo.file');
+let commonUtils = new CommonUtils_1.CommonUtils();
+describe('[SPEC]: Resupply Orders- I spoke with the patient: Workflow tests', function () {
+    let loginLib;
+    let homepageLib;
+    let pendingOrdersLib;
+    let contactPatientOrdersLib;
+    let reportsLib;
+    let reportsOrderLib;
+    let addPatientLib;
+    let adminDashboardLib;
+    let resuppliesCampaignListLib;
+    let resuppliesContactInformationLib;
+    let resuppliesDashboardLib;
+    let resupplyOrdersLib;
+    let patient;
+    let patientInfo;
+    let insurance;
+    let order;
+    let product;
+    let document;
+    beforeEach(function () {
+        return __awaiter(this, void 0, void 0, function* () {
+            loginLib = new LoginLib_1.LoginLib();
+            homepageLib = new HomepageLib_1.HomepageLib();
+            pendingOrdersLib = new PendingOrdersLib_1.PendingOrdersLib();
+            contactPatientOrdersLib = new ContactPatientOrdersLib_1.ContactPatientOrdersLib();
+            reportsLib = new ReportsLib_1.ReportsLib();
+            reportsOrderLib = new OrdersLib_1.OrdersLib();
+            addPatientLib = new AddPatientLib_1.AddPatientLib();
+            patient = new Patient_1.Patient(AddPatientMode_1.AddPatientMode.NORMAL_ADD);
+            insurance = new Insurance_1.Insurance(AddPatientMode_1.AddPatientMode.NORMAL_ADD, InsuranceType_1.InsuranceType.PRIMARY);
+            order = new Order_1.Order(AddPatientMode_1.AddPatientMode.NORMAL_ADD, OrderType_1.OrderType.AUTO_CPAP);
+            product = new Product_1.Product();
+            document = new Document_1.Document(Tabs_1.Tabs.ORDER, DocumentType_1.DocumentType.COMPLETED_DELIVERY_TICKET);
+            adminDashboardLib = new AdminDashboardLib_1.AdminDashboardLib();
+            resuppliesCampaignListLib = new ResuppliesCampaignListLib_1.ResuppliesCampaignListLib();
+            resuppliesContactInformationLib = new ResuppliesContactInformationLib_1.ResuppliesContactInformationLib();
+            resuppliesDashboardLib = new ResuppliesDashboardLib_1.ResuppliesDashboardLib();
+            resupplyOrdersLib = new ResupplyOrdersLib_1.ResupplyOrdersLib();
+            let a7035_hcpcsCode = 'A7035';
+            let a7037_hcpcsCode = 'A7037';
+            yield loginLib.doBaseLogin();
+            yield homepageLib.selectAddPatientMode(AddPatientMode_1.AddPatientMode.NORMAL_ADD);
+            patientInfo = yield patient.addBasePatient(true);
+            yield addPatientLib.navigateToInsuranceInfoTab();
+            yield insurance.addBaseInsurance(true);
+            yield addPatientLib.navigateToOrdersTab();
+            yield order.addBaseOrder(false);
+            yield addPatientLib.getOrdersLib().getOrderInfoLib().getProductsGrid().deleteProductUsingHCPCSCode(a7035_hcpcsCode);
+            yield addPatientLib.getOrdersLib().getOrderInfoLib().getProductsGrid().deleteProductUsingHCPCSCode(a7037_hcpcsCode);
+            yield product.addBaseProduct(true);
+            //Verify the added Insurance 
+            let verificationDate = commonUtils.getDateFromString(orderInfoProperties.get('orders.insuranceverification.verificationdate'));
+            yield addPatientLib.getOrdersLib().verifyInsurance(verificationDate);
+            yield addPatientLib.getOrdersLib().navigateToOrderInfoTab();
+            //Generate Delivery Ticket 
+            let deliveryTicketFormInfo = new DeliveryTicketFormInfo_1.DeliveryTicketFormInfo();
+            deliveryTicketFormInfo.setPatientSign(true);
+            let formsInfo = new FormsInfo_1.FormsInfo();
+            formsInfo.setDeliveryTicketFormInfo(deliveryTicketFormInfo);
+            yield addPatientLib.getOrdersLib().generateForms(formsInfo);
+            yield addPatientLib.getOrdersLib().getOrderInfoLib().saveOrder();
+            yield addPatientLib.getOrdersLib().navigateToDocumentsTab();
+            yield document.uploadTestDocument();
+            yield addPatientLib.getOrdersLib().navigateToOrderInfoTab();
+            yield addPatientLib.getOrdersLib().getOrderInfoLib().completeAndConfirmOrder();
+            //Logout -> Login with an Admin User which has rights to trigger a Cron job 
+            yield homepageLib.logout();
+            //SU - Admin credentials 
+            let sUserInfo = new UserInfo_1.UserInfo();
+            sUserInfo.setUserName(userInfoProperties.get('userinfo.username.su.adminuser'));
+            sUserInfo.setPassword(userInfoProperties.get('userinfo.password.su.adminuser'));
+            let monthOffset = 4;
+            let startDateOfCronJob = new Date(2019, 1, 1);
+            let endDateOfCronJob = commonUtils.getDateWithOffset(monthOffset);
+            yield loginLib.login(sUserInfo);
+            yield homepageLib.navigateToAdminDashboardPage();
+            yield adminDashboardLib.navigateToAdminDashboardBucket(AdminDashboardBucket_1.AdminDashboardBucket.RESUPPLY_CAMPAIGNS);
+            yield resuppliesCampaignListLib.processCustomCronJob(startDateOfCronJob, endDateOfCronJob);
+            yield homepageLib.logout();
+            yield loginLib.doBaseLogin();
+        });
+    });
+    it('[TEST]: Resupplies Contact Information > I spoke with the patient - Order cancelled', function () {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.RESUPPLIES);
+            yield resuppliesDashboardLib.navigateToResuppliesDashboardBucket(ResuppliesDashboardBucket_1.ResuppliesDashboardBucket.NEW_ORDERS);
+            yield resupplyOrdersLib.navigateToResuppliesContactInformationPage(patientInfo.getFirstName());
+            let iSpokeWithPatientInfo = new ISpokeWithPatientInfo_1.ISpokeWithPatientInfo();
+            iSpokeWithPatientInfo.setQuestionOneAnswer(ISpokeWithPatientAnswers_1.ISpokeWithPatientAnswers.NO);
+            iSpokeWithPatientInfo.setQuestionTwoAnswer(ISpokeWithPatientAnswers_1.ISpokeWithPatientAnswers.NO);
+            yield resuppliesContactInformationLib.getContactPatientLib().fillISpokeWithThePatientQuestionnaire(iSpokeWithPatientInfo);
+            yield resuppliesContactInformationLib.getContactPatientLib().next();
+            yield resuppliesContactInformationLib.getContactPatientLib().saveCancelResupplyOrderNote();
+            let firstRowIndex = 1;
+            yield homepageLib.navigateToReportsPage();
+            yield reportsLib.navigateToReportsBucket(ReportsBucket_1.ReportsBucket.CANCELLED);
+            yield reportsOrderLib.searchViaPatientNameFilter(patientInfo.getFirstName());
+            yield expect(yield reportsOrderLib.getPatientName(firstRowIndex)).toContain(patientInfo.getFirstName());
+        });
+    });
+    it('[TEST]: Resupplies Contact Information > I spoke with the patient - YYNN', function () {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.RESUPPLIES);
+            yield resuppliesDashboardLib.navigateToResuppliesDashboardBucket(ResuppliesDashboardBucket_1.ResuppliesDashboardBucket.NEW_ORDERS);
+            yield resupplyOrdersLib.navigateToResuppliesContactInformationPage(patientInfo.getFirstName());
+            let iSpokeWithPatientInfo = new ISpokeWithPatientInfo_1.ISpokeWithPatientInfo();
+            yield resuppliesContactInformationLib.getContactPatientLib().fillISpokeWithThePatientQuestionnaire(iSpokeWithPatientInfo);
+            yield resuppliesContactInformationLib.getContactPatientLib().next();
+            yield resuppliesContactInformationLib.getSuppliesLib().next();
+            yield resuppliesContactInformationLib.getProcessResultLib().finish();
+            yield resuppliesContactInformationLib.getProcessResultLib().save();
+            yield resupplyOrdersLib.navigateToResuppliesDashboard();
+            yield resuppliesDashboardLib.navigateBackToHomepageDashboard();
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.PENDING);
+            yield pendingOrdersLib.searchViaPatientNameFilter(patientInfo.getFirstName());
+            let firstRowIndex = 1;
+            expect(yield pendingOrdersLib.getPatientName(firstRowIndex)).toContain(patientInfo.getFirstName());
+        });
+    });
+    it('[TEST]: Resupplies Contact Information > I spoke with the patient - YYYN', function () {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.RESUPPLIES);
+            yield resuppliesDashboardLib.navigateToResuppliesDashboardBucket(ResuppliesDashboardBucket_1.ResuppliesDashboardBucket.NEW_ORDERS);
+            yield resupplyOrdersLib.navigateToResuppliesContactInformationPage(patientInfo.getFirstName());
+            let iSpokeWithPatientInfo = new ISpokeWithPatientInfo_1.ISpokeWithPatientInfo();
+            iSpokeWithPatientInfo.setQuestionThreeAnswer(ISpokeWithPatientAnswers_1.ISpokeWithPatientAnswers.YES);
+            yield resuppliesContactInformationLib.getContactPatientLib().fillISpokeWithThePatientQuestionnaire(iSpokeWithPatientInfo);
+            yield resuppliesContactInformationLib.getContactPatientLib().next();
+            yield resuppliesContactInformationLib.getSuppliesLib().next();
+            yield resuppliesContactInformationLib.getProcessResultLib().finish();
+            yield resuppliesContactInformationLib.getProcessResultLib().save();
+            yield resupplyOrdersLib.navigateToResuppliesDashboard();
+            yield resuppliesDashboardLib.navigateBackToHomepageDashboard();
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.PENDING);
+            yield pendingOrdersLib.searchViaPatientNameFilter(patientInfo.getFirstName());
+            let firstRowIndex = 1;
+            let expectedOrderTypeInPendingOrders = 'RESUPPLY';
+            expect(yield pendingOrdersLib.getPatientName(firstRowIndex)).toContain(patientInfo.getFirstName());
+            expect(yield pendingOrdersLib.getOrderType(firstRowIndex)).toContain(expectedOrderTypeInPendingOrders);
+            yield homepageLib.navigateToHomepage();
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.CONTACT_PATIENT);
+            yield contactPatientOrdersLib.searchViaPatientNameFilter(patientInfo.getFirstName());
+            let expectedOrderTypeInContactPatient = 'Patient-ReEducation';
+            expect(yield pendingOrdersLib.getPatientName(firstRowIndex)).toContain(patientInfo.getFirstName());
+            expect(yield pendingOrdersLib.getOrderType(firstRowIndex)).toContain(expectedOrderTypeInContactPatient);
+        });
+    });
+    it('[TEST]: Resupplies Contact Information > I spoke with the patient - YYYY', function () {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.RESUPPLIES);
+            yield resuppliesDashboardLib.navigateToResuppliesDashboardBucket(ResuppliesDashboardBucket_1.ResuppliesDashboardBucket.NEW_ORDERS);
+            yield resupplyOrdersLib.navigateToResuppliesContactInformationPage(patientInfo.getFirstName());
+            let iSpokeWithPatientInfo = new ISpokeWithPatientInfo_1.ISpokeWithPatientInfo();
+            iSpokeWithPatientInfo.setQuestionThreeAnswer(ISpokeWithPatientAnswers_1.ISpokeWithPatientAnswers.YES);
+            iSpokeWithPatientInfo.setQuestionFourAnswer(ISpokeWithPatientAnswers_1.ISpokeWithPatientAnswers.YES);
+            yield resuppliesContactInformationLib.getContactPatientLib().fillISpokeWithThePatientQuestionnaire(iSpokeWithPatientInfo);
+            yield resuppliesContactInformationLib.getContactPatientLib().next();
+            yield resuppliesContactInformationLib.getSuppliesLib().next();
+            yield resuppliesContactInformationLib.getProcessResultLib().finish();
+            yield resuppliesContactInformationLib.getProcessResultLib().save();
+            yield resupplyOrdersLib.navigateToResuppliesDashboard();
+            yield resuppliesDashboardLib.navigateBackToHomepageDashboard();
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.PENDING);
+            yield pendingOrdersLib.searchViaPatientNameFilter(patientInfo.getFirstName());
+            let firstRowIndex = 1;
+            let expectedOrderTypeInPendingOrders = 'RESUPPLY';
+            expect(yield pendingOrdersLib.getPatientName(firstRowIndex)).toContain(patientInfo.getFirstName());
+            expect(yield pendingOrdersLib.getOrderType(firstRowIndex)).toContain(expectedOrderTypeInPendingOrders);
+            yield homepageLib.navigateToHomepage();
+            yield homepageLib.navigateToHomepageDashboardBucket(HomepageDashboardBucket_1.HomepageDashboardBucket.CONTACT_PATIENT);
+            yield contactPatientOrdersLib.searchViaPatientNameFilter(patientInfo.getFirstName());
+            let expectedOrderTypeInContactPatient = 'Patient-ReEducation';
+            expect(yield pendingOrdersLib.getPatientName(firstRowIndex)).toContain(patientInfo.getFirstName());
+            expect(yield pendingOrdersLib.getOrderType(firstRowIndex)).toContain(expectedOrderTypeInContactPatient);
+        });
+    });
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUmVzdXBwbHlPcmRlcnNJU3Bva2VXaXRoUGF0aWVudFdvcmtmbG93VGVzdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3JhX2F1dG9tYXRpb24vc3BlYy9ob21lcGFnZWRhc2hib2FyZC9yZXN1cHBsaWVzYnVja2V0L3dvcmtmbG93L1Jlc3VwcGx5T3JkZXJzSVNwb2tlV2l0aFBhdGllbnRXb3JrZmxvd1Rlc3QudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLGlFQUE4RDtBQUM5RCxzRUFBbUU7QUFDbkUsMEVBQXVFO0FBQ3ZFLHNGQUFtRjtBQUNuRiwrREFBNEQ7QUFDNUQsbUVBQWdFO0FBQ2hFLGdFQUE2RDtBQUM3RCwrREFBNEQ7QUFDNUQsd0VBQXFFO0FBQ3JFLDJEQUF3RDtBQUN4RCwrREFBNEQ7QUFDNUQsNkRBQTBEO0FBQzFELDRGQUF5RjtBQUN6RixzRkFBbUY7QUFDbkYsb0lBQWlJO0FBRWpJLGdLQUE2SjtBQUM3Siw0RkFBeUY7QUFDekYsNkdBQTBHO0FBQzFHLGdHQUE2RjtBQUM3RixtR0FBZ0c7QUFDaEcsdUZBQW9GO0FBQ3BGLDhGQUEyRjtBQUMzRix3RUFBcUU7QUFDckUsdUVBQW9FO0FBQ3BFLHFFQUFrRTtBQUNsRSw4RkFBMkY7QUFDM0YsbUhBQWdIO0FBQ2hILGlFQUE4RDtBQUM5RCxzREFBbUQ7QUFDbkQsc0VBQW1FO0FBQ25FLHlGQUFzRjtBQUN0RiwrREFBNEQ7QUFFNUQsSUFBSSxnQkFBZ0IsR0FBRyxPQUFPLENBQUMsbUJBQW1CLENBQUMsQ0FBQztBQUNwRCxJQUFJLG1CQUFtQixHQUFHLGdCQUFnQixDQUFDLDhDQUE4QyxDQUFDLENBQUM7QUFDM0YsSUFBSSxrQkFBa0IsR0FBRyxnQkFBZ0IsQ0FBQyw2Q0FBNkMsQ0FBQyxDQUFDO0FBQ3pGLElBQUksV0FBVyxHQUFlLElBQUkseUJBQVcsRUFBRSxDQUFDO0FBRWhELFFBQVEsQ0FBQyxtRUFBbUUsRUFBRTtJQUMx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

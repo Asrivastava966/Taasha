@@ -1,0 +1,6 @@
+doctorinfo.firstname = TEST-fName
+doctorinfo.lastname = TEST-lName
+doctorinfo.addressone = test-addressOne
+doctorinfo.addresstwo = test-addressTwo
+doctorinfo.phone = 9765865656
+doctorinfo.ext = 036549

@@ -1,0 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class CommunicationsPO {
+}
+exports.CommunicationsPO = CommunicationsPO;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29tbXVuaWNhdGlvbnNQTy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3JhX2F1dG9tYXRpb24vcG8vbm9ybWFsYWRkcGF0aWVudHBhZ2Uvb3JkZXJzcGFnZS9Db21tdW5pY2F0aW9uc1BPLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsTUFBYSxnQkFBZ0I7Q0FFNUI7QUFGRCw0Q0FFQyJ9

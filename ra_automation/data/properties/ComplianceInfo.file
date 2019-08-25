@@ -1,0 +1,9 @@
+complianceinfo.dmeoffice = COMMUNITY SURGICAL_defaultoffice
+complianceinfo.clinicaluser = Clinical, Community Surgical Supply
+
+//Compliance - Respironics
+complianceinfo.deviceinfo.respironics.papserialno = 
+
+//Compliance - Resmed
+complianceinfo.deviceinfo.resmed.papserialno = 
+complianceinfo.deviceinfo.resmed.deviceno = 

@@ -1,0 +1,59 @@
+<--- Success Messages --->
+
+success.adduser = User added successfully.
+success.updateuser = User updated successfully.
+
+success.admindashboard.updatesalesrep = Marketing Representative updated successfully.
+success.admindashboard.updatetechnician = Technician Information updated successfully.
+success.admindashboard.addinsuranceprovider = information added successfully.
+success.admindashboard.updateinsuranceprovider = information updated successfully.
+success.admindashboard.deleteinsuranceprovider = Insurance Provider deleted successfully.
+success.admindashboard.adddoctor = Doctor Information added successfully.
+success.admindashboard.updateddoctor = Doctor Information updated successfully.
+
+
+success.addpatient.normaladd = Patient added successfully.
+success.updatepatient = Patient updated successfully. 
+
+success.addpatient.normaladd.addinsurance = Order Insurance added successfully. 
+success.addpatient.normaladd.updateinsurance = Order Insurance updated successfully.
+
+success.addpatient.normaladd.addorder = Order added successfully.
+success.addpatient.normaladd.updateorder = Order updated successfully. 
+success.addpatient.normaladd.completeorder = completed successfully.
+success.addpatient.normaladd.deleteorder = deleted successfully.
+
+success.addpatient.normaladd.adddoctorinfo = Doctor Information added successfully. 
+
+success.addpatient.normaladd.addordernote = Order Notes added successfully. 
+success.addpatient.normaladd.updateordernote = Order Notes updated successfully.
+success.addpatient.normaladd.ordernote.addcomment = Order Notes Comment added successfully.
+
+success.addpatient.normaladd.addnote = Notes added successfully.
+success.addpatient.normaladd.updatenote = Notes updated successfully.
+success.addpatient.normaladd.note.addcomment = Comments added successfully.
+
+success.addpatient.normaladd.uploaddocument = Document(s) Successfully Uploaded
+
+<--- Validation Messages --->
+
+validation.inline.required = Required Field
+
+validation.addpatient.normaladd.existinginsurancetype = Insurance Type already exist
+validation.addpatient.normaladd.existingorder = Order with the same Order Type is present for this patient with the Order#(s)
+validation.addpatient.normaladd.productswithoutpricetype = codes price type is not select.
+validation.addpatient.normaladd.completeorderbeforesaving = Save order products before complete the order.
+validation.addpatient.normaladd.completeorderwithoutinsverification = To move an Order to Complete status all insurance(s) must be verified. Please complete the insurance verification to complete this action.
+validation.addpatient.normaladd.completeorderwithoutsetupdate = To move an Order to Completed status please verify that a Setup Date has been entered.
+validation.addpatient.normaladd.completeorderwithoutproduct = To move an Order to Complete status add at least one product.
+validation.addpatient.normaladd.completeorderwithoutdeliveryticket = To move an Order to Completed status please verify that a Completed Delivery Ticket has been uploaded.
+
+validation.findpatient.required = First 50 matching results are displayed below. Provide additional filters to further refine the search results.
+
+validation.admindashboard.insprovider.noinsproviderfound = No Insurance Provider Found. 
+
+validation.admindashboard.doctors.duplicatedoctor = already exists in the system and cannot be duplicated.
+
+<--- Confirmation Messages ---> 
+confirmation.modal.unsavedchanges = There are unsaved changes, do you want to save?
+confirmation.modal.deleteinsuranceprovider = Are you sure you want to delete
