@@ -15,7 +15,7 @@
     "log4js": "^3.0.6",
     "log4js-protractor-appender": "^1.1.2",
     "ndb": "^1.0.26",
-    "nodemailer": "^4.7.0",
+    "nodemailer": "^6.4.16",
     "properties-reader": "^0.0.16",
     "protractor": "^5.4.1",
     "protractor-api-resource": "^1.0.3",
